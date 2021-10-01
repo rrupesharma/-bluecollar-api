@@ -1,3405 +1,2924 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "title": "SunShine Admin API document",
-        "version": "1.0.0",
-        "license": {
-            "name": "ISC"
-        },
-        "description": "Adita Technologies"
+  "swagger": "2.0",
+  "info": {
+    "title": "SunShine Admin API document",
+    "version": "1.0.0",
+    "license": {
+      "name": "ISC"
     },
-    "host": "localhost:8881",
-    "tags": [
-        {
-            "name": "Admin",
-            "description": ""
-        },
-        {
-            "name": "Product",
-            "description": ""
-        },
-        {
-            "name": "Supplier",
-            "description": ""
-        },
-        {
-            "name": "Customer",
-            "description": ""
-        },
-        {
-            "name": "My Menu",
-            "description": ""
-        },
-        {
-            "name": "Pantry",
-            "description": ""
-        },
-        {
-            "name": "Tag",
-            "description": ""
-        },
-        {
-            "name": "SalesOrder",
-            "description": ""
-        },
-        {
-            "name": "Email Template",
-            "description": ""
-        },
-        {
-            "name": "Images",
-            "description": ""
-        },
-        {
-            "name": "Category",
-            "description": ""
-        },
-        {
-            "name": "Sub Category",
-            "description": ""
-        },
-        {
-            "name": "Cron",
-            "description": ""
-        },
-        {
-            "name": "Feedback",
-            "description": ""
-        },
-        {
-            "name": "Contain",
-            "description": ""
-        },
-        {
-            "name": "Slider",
-            "description": ""
-        }
-    ],
-    "basePath": "/api/v1",
-    "schemes": [
-        "http",
-        "https"
-    ],
-    "paths": {
-        "/admin/login": {
-            "post": {
-                "summary": "/admin/login",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "login",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "username",
-                                "password"
-                            ],
-                            "properties": {
-                                "username": {
-                                    "type": "string"
-                                },
-                                "password": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-        "/admin/forgot-password": {
-            "post": {
-                "summary": "/admin/forgot-password",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "forgot password",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "email"
-                            ],
-                            "properties": {
-                                "email": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-        "/admin/reset-password": {
-            "post": {
-                "summary": "/admin/reset-password",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "reset password",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "token",
-                                "newpassword",
-                                "confpassword"
-                            ],
-                            "properties": {
-                                "token": {
-                                    "type": "string"
-                                },
-                                "password": {
-                                    "type": "string"
-                                },
-                                "confpassword": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-        "/admin/check-verification": {
-            "post": {
-                "summary": "/admin/reset-password",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "reset password",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "token",
-                                "password",
-                                "confpassword"
-                            ],
-                            "properties": {
-                                "token": {
-                                    "type": "string"
-                                },
-                                "username": {
-                                    "type": "string"
-                                },
-                                "password": {
-                                    "type": "string"
-                                },
-                                "confpassword": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-        "/admin/change-password": {
-            "post": {
-                "summary": "/admin/change-password",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "change password",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "password",
-                                "confpassword"
-                            ],
-                            "properties": {
-                                "password": {
-                                    "type": "string"
-                                },
-                                "confpassword": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-
-
-        "/admin/list": {
-            "post": {
-                "summary": "/admin/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list customer",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "key": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-        "/admin/list/{id}": {
-            "get": {
-                "summary": "/admin/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-        "/admin/create": {
-            "post": {
-                "summary": "/admin/create",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "admin create",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "email",
-                                "first_name",
-                                "last_name"
-                            ],
-                            "properties": {
-                                "email":{"type": "string"},
-                                "first_name":{"type": "string"},
-                                "last_name":{"type": "string"},
-                                "phone":{"type": "string"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-        "/admin/update": {
-            "put": {
-                "summary": "/admin/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "admin create",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "id",
-                                "email",
-                                "first_name",
-                                "last_name"
-                            ],
-                            "properties": {
-                                "id":{"type": "integer"},
-                                "email":{"type": "string"},
-                                "first_name":{"type": "string"},
-                                "last_name":{"type": "string"},
-                                "phone":{"type": "string"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-        "/admin/del/{id}": {
-            "delete": {
-                "summary": "/admin/del/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Admin"
-                ]
-            }
-        },
-
-
-        "/product/getProductByTag/{tag_id}": {
-            "get": {
-                "summary": "/product/getProductByTag/{tag_id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "tag_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/list": {
-            "post": {
-                "summary": "/product/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list product",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "filter": {
-                                    "type": "object"
-                                }
-                            },
-                            "example": {
-                                "limit":10,
-                                "offset":0,
-                                "filter":{
-                                    "supplierno":374,
-                                    "suppstatus":true,
-                                    "key":"pizza"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/list/{id}": {
-            "get": {
-                "summary": "/product/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/create": {
-            "post": {
-                "summary": "/product/create",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "product create",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "stockcode",
-                                "product_name",
-                                "unit_per_carton",
-                                "pqty",
-                                "x_pack_description",
-                                "supplierno",
-                                "product_desc",
-                                "stockgroup",
-                                "stockgroup2",
-                                "totalstock",
-                                "sellprice1"
-                            ],
-                            "properties": {
-                                "product_code":{"type": "string"},
-                                "product_name":{"type": "string"},
-                                "unit_per_carton":{"type": "number"},
-                                "pqty":{"type": "number"},
-                                "x_pack_description":{"type": "string"},
-                                "supplierno":{"type": "string"},
-                                "product_desc":{"type": "string"},
-                                "stockgroup":{"type": "integer"},
-                                "stockgroup2":{"type": "integer"},
-                                "totalstock":{"type": "integer"},
-                                "sellprice1":{"type": "integer"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/update": {
-            "put": {
-                "summary": "/product/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "product create",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "stockcode",
-                                "product_name",
-                                "unit_per_carton",
-                                "pqty",
-                                "x_pack_description",
-                                "supplierno",
-                                "product_desc",
-                                "stockgroup",
-                                "stockgroup2",
-                                "totalstock",
-                                "sellprice1"
-                            ],
-                            "properties": {
-                                "product_code":{"type": "string"},
-                                "product_name":{"type": "string"},
-                                "unit_per_carton":{"type": "number"},
-                                "pqty":{"type": "number"},
-                                "x_pack_description":{"type": "string"},
-                                "supplierno":{"type": "string"},
-                                "product_desc":{"type": "string"},
-                                "stockgroup":{"type": "integer"},
-                                "stockgroup2":{"type": "integer"},
-                                "totalstock":{"type": "integer"},
-                                "sellprice1":{"type": "integer"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/category": {
-            "get": {
-                "summary": "/product/category",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/subCategory": {
-            "get": {
-                "summary": "/product/subCategory",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/filtersList": {
-            "get": {
-                "summary": "/product/filtersList",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/updateSuppStatus": {
-            "put": {
-                "summary": "/product/updateSuppStatus",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "product supplier status",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "stockcode",
-                                "suppstatus"
-                            ],
-                            "properties": {
-                                "stockcode":{"type": "string"},
-                                "suppstatus":{"type": "boolean"},
-                                "suppcomment":{"type": "string"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/unApproveStock": {
-            "get": {
-                "summary": "/product/unApproveStock",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/createBySupplier": {
-            "post": {
-                "summary": "/product/createBySupplier",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "product create by supplier",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "stockcode",
-                                "product_name",
-                                "unit_per_carton",
-                                "pqty",
-                                "x_pack_description",
-                                "supplierno",
-                                "product_desc",
-                                "stockgroup",
-                                "stockgroup2"
-                            ],
-                            "properties": {
-                                "product_code":{"type": "string"},
-                                "product_name":{"type": "string"},
-                                "unit_per_carton":{"type": "number"},
-                                "pqty":{"type": "number"},
-                                "x_pack_description":{"type": "string"},
-                                "supplierno":{"type": "string"},
-                                "product_desc":{"type": "string"},
-                                "stockgroup":{"type": "integer"},
-                                "stockgroup2":{"type": "integer"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/product/updateBySupplier": {
-            "put": {
-                "summary": "/product/updateBySupplier",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "product updated by supplier",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "stockcode",
-                                "product_name",
-                                "unit_per_carton",
-                                "pqty",
-                                "x_pack_description",
-                                "supplierno",
-                                "product_desc",
-                                "stockgroup",
-                                "stockgroup2"
-                            ],
-                            "properties": {
-                                "product_code":{"type": "string"},
-                                "product_name":{"type": "string"},
-                                "unit_per_carton":{"type": "number"},
-                                "pqty":{"type": "number"},
-                                "x_pack_description":{"type": "string"},
-                                "supplierno":{"type": "string"},
-                                "product_desc":{"type": "string"},
-                                "stockgroup":{"type": "integer"},
-                                "stockgroup2":{"type": "integer"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Product"
-                ]
-            }
-        },
-        "/supplier/all": {
-            "get": {
-                "summary": "/supplier/all",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Supplier"
-                ]
-            }
-        },
-        "/supplier/list": {
-            "post": {
-                "summary": "/supplier/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list supplier",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "key": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Supplier"
-                ]
-            }
-        },
-        "/supplier/list/{id}": {
-            "get": {
-                "summary": "/supplier/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Supplier"
-                ]
-            }
-        },
-        "/supplier/sendVerifcaltionlink": {
-            "post": {
-                "summary": "/supplier/sendVerifcaltionlink",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "supplier sendVerifcaltionlink",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "email",
-                                "name"
-                            ],
-                            "properties": {
-                                "email": {
-                                    "type": "string"
-                                },
-                                "name": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Supplier"
-                ]
-            }
-        },
-
-
-        "/customer/list": {
-            "post": {
-                "summary": "/customer/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list customer",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "key": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Customer"
-                ]
-            }
-        },
-        "/customer/list/{id}": {
-            "get": {
-                "summary": "/customer/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Customer"
-                ]
-            }
-        },
-        "/customer/sendVerifcaltionlink": {
-            "post": {
-                "summary": "/customer/sendVerifcaltionlink",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "customer sendVerifcaltionlink",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "email",
-                                "name"
-                            ],
-                            "properties": {
-                                "email": {
-                                    "type": "string"
-                                },
-                                "name": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Customer"
-                ]
-            }
-        },
-        "/customer/listByMenu": {
-            "get": {
-                "summary": "/customer/listByMenu",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Customer"
-                ]
-            }
-        },
-        "/customer/listByPantry": {
-            "get": {
-                "summary": "/customer/listByPantry",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Customer"
-                ]
-            }
-        },
-
-        "/mymenu/all-menu/{user_id}": {
-            "get": {
-                "summary": "/mymenu/all-menu/{accno}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "user_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "My Menu"
-                ]
-            }
-        },
-        "/mymenu/all-meal/{menu_id}": {
-            "get": {
-                "summary": "/mymenu/all-meal/{menu_id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "menu_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "My Menu"
-                ]
-            }
-        },
-        "/mymenu/list": {
-            "post": {
-                "summary": "/mymenu/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list menu",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset",
-                                "user_id",
-                                "menu_id"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "user_id": {
-                                    "type": "integer"
-                                },
-                                "menu_id": {
-                                    "type": "integer"
-                                },
-                                "meal_id": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "My Menu"
-                ]
-            }
-        },
-
-        "/pantry/all-pantry/{user_id}": {
-            "get": {
-                "summary": "/pantry/all-pantry/{accno}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "user_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Pantry"
-                ]
-            }
-        },
-        "/pantry/list": {
-            "post": {
-                "summary": "/mymenu/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list menu",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset",
-                                "user_id"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "user_id": {
-                                    "type": "integer"
-                                },
-                                "pantry_id": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Pantry"
-                ]
-            }
-        },
-
-        "/tag/list": {
-            "post": {
-                "summary": "/tag/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list tag",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "key": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Tag"
-                ]
-            }
-        },
-        "/tag/list/{tag_id}": {
-            "get": {
-                "summary": "/tag/list/{tag_id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "tag_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Tag"
-                ]
-            }
-        },
-        "/tag/getTagProduct": {
-            "post": {
-                "summary": "/tag/getTagProduct",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "get product tag",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "tag_id",
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "tag_id": {
-                                    "type": "integer"
-                                },
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Tag"
-                ]
-            }
-        },
-        "/tag/create": {
-            "post": {
-                "summary": "/tag/create",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "create tag",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "tag_name",
-                                "ordering"
-                            ],
-                            "properties": {
-                                "tag_name": {
-                                    "type": "string"
-                                },
-                                "ordering": {
-                                    "type": "integer"
-                                },
-                                "image": {
-                                    "type": "string"
-                                },
-                                "image2": {
-                                    "type": "string"
-                                },
-                                "background": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Tag"
-                ]
-            }
-        },
-        "/tag/addProduct": {
-            "post": {
-                "summary": "/tag/addProduct",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "add product tag",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "stockcode",
-                                "tag_id"
-                            ],
-                            "properties": {
-                                "stockcode": {
-                                    "type": "object"
-                                },
-                                "tag_id": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Tag"
-                ]
-            }
-        },
-        "/tag/update": {
-            "put": {
-                "summary": "/tag/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "tag update",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "tag_id",
-                                "tag_name",
-                                "ordering"
-                            ],
-                            "properties": {
-                                "tag_id":{"type": "integer"},
-                                "tag_name":{"type": "string"},
-                                "ordering":{"type": "integer"},
-                                "image": {
-                                    "type": "string"
-                                },
-                                "image2": {
-                                    "type": "string"
-                                },
-                                "background": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Tag"
-                ]
-            }
-        },
-        "/tag/updateStatus": {
-            "put": {
-                "summary": "/tag/updateStatus",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "tag update status",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "tag_id",
-                                "status"
-                            ],
-                            "properties": {
-                                "tag_id":{"type": "integer"},
-                                "status":{"type": "boolean"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Tag"
-                ]
-            }
-        },
-        "/tag/delete/{tag_id}": {
-            "delete": {
-                "summary": "/tag/del/{tag_id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "tag_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Tag"
-                ]
-            }
-        },
-        "/tag/delProduct/{tag_map_id}": {
-            "delete": {
-                "summary": "/tag/delProduct/{tag_map_id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "tag_map_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Tag"
-                ]
-            }
-        },
-
-
-
-
-        "/email-tempate/list": {
-            "post": {
-                "summary": "/email-tempate/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list email-tempate",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Email Template"
-                ]
-            }
-        },
-        "/email-tempate/list/{temp_id}": {
-            "get": {
-                "summary": "/email-tempate/list/{tag_id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "tag_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Email Template"
-                ]
-            }
-        },
-        "/email-tempate/create": {
-            "post": {
-                "summary": "/email-tempate/create",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "create email-tempate",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "temp_name",
-                                "temp_subject",
-                                "temp_body"
-                            ],
-                            "properties": {
-                                "temp_name": {
-                                    "type": "string"
-                                },
-                                "temp_subject": {
-                                    "type": "string"
-                                },
-                                "temp_body": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Email Template"
-                ]
-            }
-        },
-        "/email-tempate/update": {
-            "put": {
-                "summary": "/email-tempate/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "email-tempate update",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "temp_id",
-                                "temp_name",
-                                "temp_subject",
-                                "temp_body"
-                            ],
-                            "properties": {
-                                "temp_id":{"type": "integer"},
-                                "temp_name":{"type": "string"},
-                                "temp_subject":{"type": "string"},
-                                "temp_body":{"type": "string"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Email Template"
-                ]
-            }
-        },
-        "/email-tempate/updateStatus": {
-            "put": {
-                "summary": "/email-tempate/updateStatus",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "email-tempate update status",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "tag_id",
-                                "status"
-                            ],
-                            "properties": {
-                                "temp_id":{"type": "integer"},
-                                "status":{"type": "boolean"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Email Template"
-                ]
-            }
-        },
-        "/email-tempate/delete/{temp_id}": {
-            "delete": {
-                "summary": "/email-tempate/del/{temp_id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "temp_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Email Template"
-                ]
-            }
-        },
-
-        "/email-tempate/check-template": {
-            "post": {
-                "summary": "/email-tempate/check-template",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "check email-tempate",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "temp_id",
-                                "email"
-                            ],
-                            "properties": {
-                                "temp_id": {
-                                    "type": "integer"
-                                },
-                                "email": {
-                                    "type": "string"
-                                }
-        
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Email Template"
-                ]
-            }
-        },
-
-
-
-
-        "/image/create": {
-            "post": {
-                "summary": "/email-tempate/create",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "create images",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "ext_id",
-                                "img_type"
-                            ],
-                            "properties": {
-                                "ext_id": {
-                                    "type": "integer"
-                                },
-                                "img_type": {
-                                    "type": "string"
-                                },
-                                "img_name": {
-                                    "type": "string"
-                                },
-                                "img_name2": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Images"
-                ]
-            }
-        },
-
-        "/image/getById": {
-            "post": {
-                "summary": "/image/getById",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "get by ext_id and img_type",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "ext_id",
-                                "img_type"
-                            ],
-                            "properties": {
-                                "ext_id": {
-                                    "type": "integer"
-                                },
-                                "img_type": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Images"
-                ]
-            }
-        },
-
-        "/image/delete/{img_id}": {
-            "delete": {
-                "summary": "/image/delete/{img_id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "img_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Images"
-                ]
-            }
-        },
-
-        "/category/list": {
-            "post": {
-                "summary": "/category/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list catrgory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "key": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Category"
-                ]
-            }
-        },
-        "/category/list/{id}": {
-            "get": {
-                "summary": "/category/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Category"
-                ]
-            }
-        },
-        "/category/update": {
-            "put": {
-                "summary": "/category/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list catrgory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "id",
-                                "popular"
-                            ],
-                            "properties": {
-                                "id": {
-                                    "type": "integer"
-                                },
-                                "popular": {
-                                    "type": "boolean"
-                                },
-                                "image": {
-                                    "type": "string"
-                                },
-                                "image2": {
-                                    "type": "string"
-                                },
-                                "background": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Category"
-                ]
-            }
-        },
-
-        "/subCategory/list": {
-            "post": {
-                "summary": "/subCategory/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list subCategory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "key": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Sub Category"
-                ]
-            }
-        },
-        "/subCategory/list/{id}": {
-            "get": {
-                "summary": "/subCategory/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Sub Category"
-                ]
-            }
-        },
-        "/subCategory/update": {
-            "put": {
-                "summary": "/subCategory/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list catrgory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "id"
-                            ],
-                            "properties": {
-                                "id": {
-                                    "type": "integer"
-                                },
-                                "image": {
-                                    "type": "string"
-                                },
-                                "image2": {
-                                    "type": "string"
-                                },
-                                "background": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Sub Category"
-                ]
-            }
-        },
-
-        "/salesorder": {
-            "post": {
-                "summary": "/salesorder",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list salesorder",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                }
-                            },
-                            "example": {
-                                "limit":10,
-                                "offset":0
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "SalesOrder"
-                ]
-            }
-        },
-        "/salesorder/{id}": {
-            "get": {
-                "summary": "/salesorder/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "SalesOrder"
-                ]
-            }
-        },
-        "/cron/list": {
-            "post": {
-                "summary": "/cron/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list all cron",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                }
-                            },
-                            "example": {
-                                "limit":10,
-                                "offset":0
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Cron"
-                ]
-            }
-        },
-        "/cron/list/{id}": {
-            "get": {
-                "summary": "/cron/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Cron"
-                ]
-            }
-        },
-        "/cron/delete/{id}": {
-            "delete": {
-                "summary": "/cron/delete/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Cron"
-                ]
-            }
-        },
-        "/cron/create": {
-            "post": {
-                "summary": "/cron/create",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "create cron",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "apiname",
-                                "timezone",
-                                "croninterval",
-                                "crontime",
-                                "crontype"
-                            ],
-                            "properties": {
-                                "apiname": {
-                                    "type": "string"
-                                },
-                                "timezone": {
-                                    "type": "string"
-                                },
-                                "croninterval": {
-                                    "type": "string"
-                                },
-                                "crontime": {
-                                    "type": "string"
-                                },
-                                "crontype": {
-                                    "type": "string"
-                                },
-                                "name": {
-                                    "type": "string"
-                                },
-                                "crondesc": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Cron"
-                ]
-            }
-        },
-        "/cron/update": {
-            "put": {
-                "summary": "/cron/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "update cron",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "id"
-                            ],
-                            "properties": {
-                                "id": {
-                                    "type": "integer"
-                                },
-                                "apiname": {
-                                    "type": "string"
-                                },
-                                "timezone": {
-                                    "type": "string"
-                                },
-                                "croninterval": {
-                                    "type": "string"
-                                },
-                                "crontime": {
-                                    "type": "string"
-                                },
-                                "crontype": {
-                                    "type": "string"
-                                },
-                                "name": {
-                                    "type": "string"
-                                },
-                                "crondesc": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Cron"
-                ]
-            }
-        },
-        "/cron/updateStatus": {
-            "put": {
-                "summary": "/cron/updateStatus",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "cron update status",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "id",
-                                "status"
-                            ],
-                            "properties": {
-                                "id":{"type": "integer"},
-                                "status":{"type": "boolean"}
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Cron"
-                ]
-            }
-        },
-        "/feedback/list": {
-            "post": {
-                "summary": "/feedback/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list all cron",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "limit",
-                                "offset"
-                            ],
-                            "properties": {
-                                "limit": {
-                                    "type": "integer"
-                                },
-                                "offset": {
-                                    "type": "integer"
-                                },
-                                "key": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Feedback"
-                ]
-            }
-        },
-        "/feedback/list/{id}": {
-            "get": {
-                "summary": "/feedback/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Feedback"
-                ]
-            }
-        },
-
-
-        "/contain/list": {
-            "get": {
-                "summary": "/contain/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Contain"
-                ]
-            }
-        },
-        "/contain/list/{id}": {
-            "get": {
-                "summary": "/contain/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Contain"
-                ]
-            }
-        },
-        "/contain/create": {
-            "post": {
-                "summary": "/contain/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list catrgory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "contain_name",
-                                "contain_order",
-                                "contain_image"
-                            ],
-                            "properties": {
-                                "contain_name": {
-                                    "type": "string"
-                                },
-                                "contain_order": {
-                                    "type": "integer"
-                                },
-                                "contain_body": {
-                                    "type": "string"
-                                },
-                                "contain_image": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Contain"
-                ]
-            }
-        },
-        "/contain/update": {
-            "put": {
-                "summary": "/contain/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list catrgory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "id",
-                                "contain_name",
-                                "contain_order",
-                                "contain_image"
-                            ],
-                            "properties": {
-                                "id": {
-                                    "type": "integer"
-                                },
-                                "contain_name": {
-                                    "type": "string"
-                                },
-                                "contain_order": {
-                                    "type": "integer"
-                                },
-                                "contain_body": {
-                                    "type": "string"
-                                },
-                                "contain_image": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Contain"
-                ]
-            }
-        },
-        "/contain/delete/{id}": {
-            "delete": {
-                "summary": "/contain/delete/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Contain"
-                ]
-            }
-        },
-
-
-        "/slider/list": {
-            "get": {
-                "summary": "/slider/list",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Slider"
-                ]
-            }
-        },
-        "/slider/list/{id}": {
-            "get": {
-                "summary": "/slider/list/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Slider"
-                ]
-            }
-        },
-        "/slider/create": {
-            "post": {
-                "summary": "/slider/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list catrgory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "slider_name"
-                            ],
-                            "properties": {
-                                "slider_name": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Slider"
-                ]
-            }
-        },
-        "/slider/update": {
-            "put": {
-                "summary": "/slider/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list catrgory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "id",
-                                "slider_name"
-                            ],
-                            "properties": {
-                                "id": {
-                                    "type": "integer"
-                                },
-                                "slider_name": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Slider"
-                ]
-            }
-        },
-        "/slider/contain/{id}": {
-            "get": {
-                "summary": "/slider/contain/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Slider"
-                ]
-            }
-        },
-        "/slider/contain/create": {
-            "post": {
-                "summary": "/slider/contain/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list catrgory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "contain_name",
-                                "contain_order",
-                                "contain_image"
-                            ],
-                            "properties": {
-                                "contain_name": {
-                                    "type": "string"
-                                },
-                                "contain_order": {
-                                    "type": "integer"
-                                },
-                                "contain_body": {
-                                    "type": "string"
-                                },
-                                "contain_image": {
-                                    "type": "string"
-                                },
-                                "contain_header": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Slider"
-                ]
-            }
-        },
-        "/slider/contain/update": {
-            "put": {
-                "summary": "/slider/contain/update",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "list catrgory",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "id",
-                                "contain_name",
-                                "contain_order",
-                                "contain_image"
-                            ],
-                            "properties": {
-                                "id": {
-                                    "type": "integer"
-                                },
-                                "contain_name": {
-                                    "type": "string"
-                                },
-                                "contain_order": {
-                                    "type": "integer"
-                                },
-                                "contain_body": {
-                                    "type": "string"
-                                },
-                                "contain_image": {
-                                    "type": "string"
-                                },
-                                "contain_header": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Slider"
-                ]
-            }
-        },
-        "/slider/contain/delete/{id}": {
-            "delete": {
-                "summary": "/slider/contain/delete/{id}",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "$ref": "#/definitions/responses"
-                },
-                "security": [
-                    {
-                        "accessToken": []
-                    }
-                ],
-                "tags": [
-                    "Slider"
-                ]
-            }
-        }
+    "description": "Adita Technologies"
+  },
+  "host": "localhost:4001",
+  "tags": [
+    {
+      "name": "Admin",
+      "description": ""
     },
-    "securityDefinitions": {
-        "accessToken": {
-            "type": "apiKey",
-            "name": "x-auth",
-            "in": "header"
-        }
+    {
+      "name": "Product",
+      "description": ""
     },
-    "definitions": {
-        "responses": {
-            "200": {
-                "description": "OK",
-                "schema": {
-                    "type": "object",
-                    "properties": {
-                        "status": {
-                            "type": "string"
-                        },
-                        "message": {
-                            "type": "string"
-                        },
-                        "data": {
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        }
+    {
+      "name": "Supplier",
+      "description": ""
+    },
+    {
+      "name": "Customer",
+      "description": ""
+    },
+    {
+      "name": "My Menu",
+      "description": ""
+    },
+    {
+      "name": "Pantry",
+      "description": ""
+    },
+    {
+      "name": "Tag",
+      "description": ""
+    },
+    {
+      "name": "SalesOrder",
+      "description": ""
+    },
+    {
+      "name": "Email Template",
+      "description": ""
+    },
+    {
+      "name": "Images",
+      "description": ""
+    },
+    {
+      "name": "Category",
+      "description": ""
+    },
+    {
+      "name": "Sub Category",
+      "description": ""
+    },
+    {
+      "name": "Cron",
+      "description": ""
+    },
+    {
+      "name": "Feedback",
+      "description": ""
+    },
+    {
+      "name": "Contain",
+      "description": ""
+    },
+    {
+      "name": "Slider",
+      "description": ""
     }
+  ],
+  "basePath": "/api/v1",
+  "schemes": ["http", "https"],
+  "paths": {
+    "/admin/login": {
+      "post": {
+        "summary": "/admin/login",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "login",
+            "schema": {
+              "type": "object",
+              "required": ["username", "password"],
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "tags": ["Admin"]
+      }
+    },
+    "/admin/forgot-password": {
+      "post": {
+        "summary": "/admin/forgot-password",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "forgot password",
+            "schema": {
+              "type": "object",
+              "required": ["email"],
+              "properties": {
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "tags": ["Admin"]
+      }
+    },
+    "/admin/reset-password": {
+      "post": {
+        "summary": "/admin/reset-password",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "reset password",
+            "schema": {
+              "type": "object",
+              "required": ["token", "newpassword", "confpassword"],
+              "properties": {
+                "token": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "confpassword": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "tags": ["Admin"]
+      }
+    },
+    "/admin/check-verification": {
+      "post": {
+        "summary": "/admin/reset-password",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "reset password",
+            "schema": {
+              "type": "object",
+              "required": ["token", "password", "confpassword"],
+              "properties": {
+                "token": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "confpassword": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "tags": ["Admin"]
+      }
+    },
+    "/admin/change-password": {
+      "post": {
+        "summary": "/admin/change-password",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "change password",
+            "schema": {
+              "type": "object",
+              "required": ["password", "confpassword"],
+              "properties": {
+                "password": {
+                  "type": "string"
+                },
+                "confpassword": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Admin"]
+      }
+    },
+
+    "/admin/list": {
+      "post": {
+        "summary": "/admin/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list customer",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Admin"]
+      }
+    },
+    "/admin/list/{id}": {
+      "get": {
+        "summary": "/admin/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Admin"]
+      }
+    },
+    "/admin/create": {
+      "post": {
+        "summary": "/admin/create",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "admin create",
+            "schema": {
+              "type": "object",
+              "required": ["email", "first_name", "last_name"],
+              "properties": {
+                "email": { "type": "string" },
+                "first_name": { "type": "string" },
+                "last_name": { "type": "string" },
+                "phone": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Admin"]
+      }
+    },
+    "/admin/update": {
+      "put": {
+        "summary": "/admin/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "admin create",
+            "schema": {
+              "type": "object",
+              "required": ["id", "email", "first_name", "last_name"],
+              "properties": {
+                "id": { "type": "integer" },
+                "email": { "type": "string" },
+                "first_name": { "type": "string" },
+                "last_name": { "type": "string" },
+                "phone": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Admin"]
+      }
+    },
+    "/admin/del/{id}": {
+      "delete": {
+        "summary": "/admin/del/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Admin"]
+      }
+    },
+
+    "/product/getProductByTag/{tag_id}": {
+      "get": {
+        "summary": "/product/getProductByTag/{tag_id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "tag_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/list": {
+      "post": {
+        "summary": "/product/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list product",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "filter": {
+                  "type": "object"
+                }
+              },
+              "example": {
+                "limit": 10,
+                "offset": 0,
+                "filter": {
+                  "supplierno": 374,
+                  "suppstatus": true,
+                  "key": "pizza"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/list/{id}": {
+      "get": {
+        "summary": "/product/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/create": {
+      "post": {
+        "summary": "/product/create",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product create",
+            "schema": {
+              "type": "object",
+              "required": [
+                "stockcode",
+                "product_name",
+                "unit_per_carton",
+                "pqty",
+                "x_pack_description",
+                "supplierno",
+                "product_desc",
+                "stockgroup",
+                "stockgroup2",
+                "totalstock",
+                "sellprice1"
+              ],
+              "properties": {
+                "product_code": { "type": "string" },
+                "product_name": { "type": "string" },
+                "unit_per_carton": { "type": "number" },
+                "pqty": { "type": "number" },
+                "x_pack_description": { "type": "string" },
+                "supplierno": { "type": "string" },
+                "product_desc": { "type": "string" },
+                "stockgroup": { "type": "integer" },
+                "stockgroup2": { "type": "integer" },
+                "totalstock": { "type": "integer" },
+                "sellprice1": { "type": "integer" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/update": {
+      "put": {
+        "summary": "/product/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product create",
+            "schema": {
+              "type": "object",
+              "required": [
+                "stockcode",
+                "product_name",
+                "unit_per_carton",
+                "pqty",
+                "x_pack_description",
+                "supplierno",
+                "product_desc",
+                "stockgroup",
+                "stockgroup2",
+                "totalstock",
+                "sellprice1"
+              ],
+              "properties": {
+                "product_code": { "type": "string" },
+                "product_name": { "type": "string" },
+                "unit_per_carton": { "type": "number" },
+                "pqty": { "type": "number" },
+                "x_pack_description": { "type": "string" },
+                "supplierno": { "type": "string" },
+                "product_desc": { "type": "string" },
+                "stockgroup": { "type": "integer" },
+                "stockgroup2": { "type": "integer" },
+                "totalstock": { "type": "integer" },
+                "sellprice1": { "type": "integer" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/category": {
+      "get": {
+        "summary": "/product/category",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/subCategory": {
+      "get": {
+        "summary": "/product/subCategory",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/filtersList": {
+      "get": {
+        "summary": "/product/filtersList",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/updateSuppStatus": {
+      "put": {
+        "summary": "/product/updateSuppStatus",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product supplier status",
+            "schema": {
+              "type": "object",
+              "required": ["stockcode", "suppstatus"],
+              "properties": {
+                "stockcode": { "type": "string" },
+                "suppstatus": { "type": "boolean" },
+                "suppcomment": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/unApproveStock": {
+      "get": {
+        "summary": "/product/unApproveStock",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/createBySupplier": {
+      "post": {
+        "summary": "/product/createBySupplier",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product create by supplier",
+            "schema": {
+              "type": "object",
+              "required": [
+                "stockcode",
+                "product_name",
+                "unit_per_carton",
+                "pqty",
+                "x_pack_description",
+                "supplierno",
+                "product_desc",
+                "stockgroup",
+                "stockgroup2"
+              ],
+              "properties": {
+                "product_code": { "type": "string" },
+                "product_name": { "type": "string" },
+                "unit_per_carton": { "type": "number" },
+                "pqty": { "type": "number" },
+                "x_pack_description": { "type": "string" },
+                "supplierno": { "type": "string" },
+                "product_desc": { "type": "string" },
+                "stockgroup": { "type": "integer" },
+                "stockgroup2": { "type": "integer" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/product/updateBySupplier": {
+      "put": {
+        "summary": "/product/updateBySupplier",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product updated by supplier",
+            "schema": {
+              "type": "object",
+              "required": [
+                "stockcode",
+                "product_name",
+                "unit_per_carton",
+                "pqty",
+                "x_pack_description",
+                "supplierno",
+                "product_desc",
+                "stockgroup",
+                "stockgroup2"
+              ],
+              "properties": {
+                "product_code": { "type": "string" },
+                "product_name": { "type": "string" },
+                "unit_per_carton": { "type": "number" },
+                "pqty": { "type": "number" },
+                "x_pack_description": { "type": "string" },
+                "supplierno": { "type": "string" },
+                "product_desc": { "type": "string" },
+                "stockgroup": { "type": "integer" },
+                "stockgroup2": { "type": "integer" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Product"]
+      }
+    },
+    "/supplier/all": {
+      "get": {
+        "summary": "/supplier/all",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Supplier"]
+      }
+    },
+    "/supplier/list": {
+      "post": {
+        "summary": "/supplier/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list supplier",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Supplier"]
+      }
+    },
+    "/supplier/list/{id}": {
+      "get": {
+        "summary": "/supplier/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Supplier"]
+      }
+    },
+    "/supplier/sendVerifcaltionlink": {
+      "post": {
+        "summary": "/supplier/sendVerifcaltionlink",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "supplier sendVerifcaltionlink",
+            "schema": {
+              "type": "object",
+              "required": ["email", "name"],
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Supplier"]
+      }
+    },
+
+    "/customer/list": {
+      "post": {
+        "summary": "/customer/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list customer",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Customer"]
+      }
+    },
+    "/customer/list/{id}": {
+      "get": {
+        "summary": "/customer/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Customer"]
+      }
+    },
+    "/customer/sendVerifcaltionlink": {
+      "post": {
+        "summary": "/customer/sendVerifcaltionlink",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "customer sendVerifcaltionlink",
+            "schema": {
+              "type": "object",
+              "required": ["email", "name"],
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Customer"]
+      }
+    },
+    "/customer/listByMenu": {
+      "get": {
+        "summary": "/customer/listByMenu",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Customer"]
+      }
+    },
+    "/customer/listByPantry": {
+      "get": {
+        "summary": "/customer/listByPantry",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Customer"]
+      }
+    },
+
+    "/mymenu/all-menu/{user_id}": {
+      "get": {
+        "summary": "/mymenu/all-menu/{accno}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["My Menu"]
+      }
+    },
+    "/mymenu/all-meal/{menu_id}": {
+      "get": {
+        "summary": "/mymenu/all-meal/{menu_id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "menu_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["My Menu"]
+      }
+    },
+    "/mymenu/list": {
+      "post": {
+        "summary": "/mymenu/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list menu",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset", "user_id", "menu_id"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "user_id": {
+                  "type": "integer"
+                },
+                "menu_id": {
+                  "type": "integer"
+                },
+                "meal_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["My Menu"]
+      }
+    },
+
+    "/pantry/all-pantry/{user_id}": {
+      "get": {
+        "summary": "/pantry/all-pantry/{accno}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Pantry"]
+      }
+    },
+    "/pantry/list": {
+      "post": {
+        "summary": "/mymenu/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list menu",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset", "user_id"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "user_id": {
+                  "type": "integer"
+                },
+                "pantry_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Pantry"]
+      }
+    },
+
+    "/tag/list": {
+      "post": {
+        "summary": "/tag/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list tag",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Tag"]
+      }
+    },
+    "/tag/list/{tag_id}": {
+      "get": {
+        "summary": "/tag/list/{tag_id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "tag_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Tag"]
+      }
+    },
+    "/tag/getTagProduct": {
+      "post": {
+        "summary": "/tag/getTagProduct",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "get product tag",
+            "schema": {
+              "type": "object",
+              "required": ["tag_id", "limit", "offset"],
+              "properties": {
+                "tag_id": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Tag"]
+      }
+    },
+    "/tag/create": {
+      "post": {
+        "summary": "/tag/create",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create tag",
+            "schema": {
+              "type": "object",
+              "required": ["tag_name", "ordering"],
+              "properties": {
+                "tag_name": {
+                  "type": "string"
+                },
+                "ordering": {
+                  "type": "integer"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "image2": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Tag"]
+      }
+    },
+    "/tag/addProduct": {
+      "post": {
+        "summary": "/tag/addProduct",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "add product tag",
+            "schema": {
+              "type": "object",
+              "required": ["stockcode", "tag_id"],
+              "properties": {
+                "stockcode": {
+                  "type": "object"
+                },
+                "tag_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Tag"]
+      }
+    },
+    "/tag/update": {
+      "put": {
+        "summary": "/tag/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tag update",
+            "schema": {
+              "type": "object",
+              "required": ["tag_id", "tag_name", "ordering"],
+              "properties": {
+                "tag_id": { "type": "integer" },
+                "tag_name": { "type": "string" },
+                "ordering": { "type": "integer" },
+                "image": {
+                  "type": "string"
+                },
+                "image2": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Tag"]
+      }
+    },
+    "/tag/updateStatus": {
+      "put": {
+        "summary": "/tag/updateStatus",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tag update status",
+            "schema": {
+              "type": "object",
+              "required": ["tag_id", "status"],
+              "properties": {
+                "tag_id": { "type": "integer" },
+                "status": { "type": "boolean" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Tag"]
+      }
+    },
+    "/tag/delete/{tag_id}": {
+      "delete": {
+        "summary": "/tag/del/{tag_id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "tag_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Tag"]
+      }
+    },
+    "/tag/delProduct/{tag_map_id}": {
+      "delete": {
+        "summary": "/tag/delProduct/{tag_map_id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "tag_map_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Tag"]
+      }
+    },
+
+    "/email-tempate/list": {
+      "post": {
+        "summary": "/email-tempate/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list email-tempate",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Email Template"]
+      }
+    },
+    "/email-tempate/list/{temp_id}": {
+      "get": {
+        "summary": "/email-tempate/list/{tag_id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "tag_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Email Template"]
+      }
+    },
+    "/email-tempate/create": {
+      "post": {
+        "summary": "/email-tempate/create",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create email-tempate",
+            "schema": {
+              "type": "object",
+              "required": ["temp_name", "temp_subject", "temp_body"],
+              "properties": {
+                "temp_name": {
+                  "type": "string"
+                },
+                "temp_subject": {
+                  "type": "string"
+                },
+                "temp_body": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Email Template"]
+      }
+    },
+    "/email-tempate/update": {
+      "put": {
+        "summary": "/email-tempate/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "email-tempate update",
+            "schema": {
+              "type": "object",
+              "required": ["temp_id", "temp_name", "temp_subject", "temp_body"],
+              "properties": {
+                "temp_id": { "type": "integer" },
+                "temp_name": { "type": "string" },
+                "temp_subject": { "type": "string" },
+                "temp_body": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Email Template"]
+      }
+    },
+    "/email-tempate/updateStatus": {
+      "put": {
+        "summary": "/email-tempate/updateStatus",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "email-tempate update status",
+            "schema": {
+              "type": "object",
+              "required": ["tag_id", "status"],
+              "properties": {
+                "temp_id": { "type": "integer" },
+                "status": { "type": "boolean" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Email Template"]
+      }
+    },
+    "/email-tempate/delete/{temp_id}": {
+      "delete": {
+        "summary": "/email-tempate/del/{temp_id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "temp_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Email Template"]
+      }
+    },
+
+    "/email-tempate/check-template": {
+      "post": {
+        "summary": "/email-tempate/check-template",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "check email-tempate",
+            "schema": {
+              "type": "object",
+              "required": ["temp_id", "email"],
+              "properties": {
+                "temp_id": {
+                  "type": "integer"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Email Template"]
+      }
+    },
+
+    "/image/create": {
+      "post": {
+        "summary": "/email-tempate/create",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create images",
+            "schema": {
+              "type": "object",
+              "required": ["ext_id", "img_type"],
+              "properties": {
+                "ext_id": {
+                  "type": "integer"
+                },
+                "img_type": {
+                  "type": "string"
+                },
+                "img_name": {
+                  "type": "string"
+                },
+                "img_name2": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Images"]
+      }
+    },
+
+    "/image/getById": {
+      "post": {
+        "summary": "/image/getById",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "get by ext_id and img_type",
+            "schema": {
+              "type": "object",
+              "required": ["ext_id", "img_type"],
+              "properties": {
+                "ext_id": {
+                  "type": "integer"
+                },
+                "img_type": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Images"]
+      }
+    },
+
+    "/image/delete/{img_id}": {
+      "delete": {
+        "summary": "/image/delete/{img_id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "img_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Images"]
+      }
+    },
+
+    "/category/list": {
+      "post": {
+        "summary": "/category/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list catrgory",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Category"]
+      }
+    },
+    "/category/list/{id}": {
+      "get": {
+        "summary": "/category/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Category"]
+      }
+    },
+    "/category/update": {
+      "put": {
+        "summary": "/category/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list catrgory",
+            "schema": {
+              "type": "object",
+              "required": ["id", "popular"],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "popular": {
+                  "type": "boolean"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "image2": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Category"]
+      }
+    },
+
+    "/subCategory/list": {
+      "post": {
+        "summary": "/subCategory/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list subCategory",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Sub Category"]
+      }
+    },
+    "/subCategory/list/{id}": {
+      "get": {
+        "summary": "/subCategory/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Sub Category"]
+      }
+    },
+    "/subCategory/update": {
+      "put": {
+        "summary": "/subCategory/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list catrgory",
+            "schema": {
+              "type": "object",
+              "required": ["id"],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "image2": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Sub Category"]
+      }
+    },
+
+    "/salesorder": {
+      "post": {
+        "summary": "/salesorder",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list salesorder",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                }
+              },
+              "example": {
+                "limit": 10,
+                "offset": 0
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["SalesOrder"]
+      }
+    },
+    "/salesorder/{id}": {
+      "get": {
+        "summary": "/salesorder/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["SalesOrder"]
+      }
+    },
+    "/cron/list": {
+      "post": {
+        "summary": "/cron/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list all cron",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                }
+              },
+              "example": {
+                "limit": 10,
+                "offset": 0
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Cron"]
+      }
+    },
+    "/cron/list/{id}": {
+      "get": {
+        "summary": "/cron/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Cron"]
+      }
+    },
+    "/cron/delete/{id}": {
+      "delete": {
+        "summary": "/cron/delete/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Cron"]
+      }
+    },
+    "/cron/create": {
+      "post": {
+        "summary": "/cron/create",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create cron",
+            "schema": {
+              "type": "object",
+              "required": [
+                "apiname",
+                "timezone",
+                "croninterval",
+                "crontime",
+                "crontype"
+              ],
+              "properties": {
+                "apiname": {
+                  "type": "string"
+                },
+                "timezone": {
+                  "type": "string"
+                },
+                "croninterval": {
+                  "type": "string"
+                },
+                "crontime": {
+                  "type": "string"
+                },
+                "crontype": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "crondesc": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Cron"]
+      }
+    },
+    "/cron/update": {
+      "put": {
+        "summary": "/cron/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "update cron",
+            "schema": {
+              "type": "object",
+              "required": ["id"],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "apiname": {
+                  "type": "string"
+                },
+                "timezone": {
+                  "type": "string"
+                },
+                "croninterval": {
+                  "type": "string"
+                },
+                "crontime": {
+                  "type": "string"
+                },
+                "crontype": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "crondesc": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Cron"]
+      }
+    },
+    "/cron/updateStatus": {
+      "put": {
+        "summary": "/cron/updateStatus",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "cron update status",
+            "schema": {
+              "type": "object",
+              "required": ["id", "status"],
+              "properties": {
+                "id": { "type": "integer" },
+                "status": { "type": "boolean" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Cron"]
+      }
+    },
+    "/feedback/list": {
+      "post": {
+        "summary": "/feedback/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list all cron",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Feedback"]
+      }
+    },
+    "/feedback/list/{id}": {
+      "get": {
+        "summary": "/feedback/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Feedback"]
+      }
+    },
+
+    "/contain/list": {
+      "get": {
+        "summary": "/contain/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Contain"]
+      }
+    },
+    "/contain/list/{id}": {
+      "get": {
+        "summary": "/contain/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Contain"]
+      }
+    },
+    "/contain/create": {
+      "post": {
+        "summary": "/contain/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list catrgory",
+            "schema": {
+              "type": "object",
+              "required": ["contain_name", "contain_order", "contain_image"],
+              "properties": {
+                "contain_name": {
+                  "type": "string"
+                },
+                "contain_order": {
+                  "type": "integer"
+                },
+                "contain_body": {
+                  "type": "string"
+                },
+                "contain_image": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Contain"]
+      }
+    },
+    "/contain/update": {
+      "put": {
+        "summary": "/contain/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list catrgory",
+            "schema": {
+              "type": "object",
+              "required": [
+                "id",
+                "contain_name",
+                "contain_order",
+                "contain_image"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "contain_name": {
+                  "type": "string"
+                },
+                "contain_order": {
+                  "type": "integer"
+                },
+                "contain_body": {
+                  "type": "string"
+                },
+                "contain_image": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Contain"]
+      }
+    },
+    "/contain/delete/{id}": {
+      "delete": {
+        "summary": "/contain/delete/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Contain"]
+      }
+    },
+
+    "/slider/list": {
+      "get": {
+        "summary": "/slider/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Slider"]
+      }
+    },
+    "/slider/list/{id}": {
+      "get": {
+        "summary": "/slider/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Slider"]
+      }
+    },
+    "/slider/create": {
+      "post": {
+        "summary": "/slider/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list catrgory",
+            "schema": {
+              "type": "object",
+              "required": ["slider_name"],
+              "properties": {
+                "slider_name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Slider"]
+      }
+    },
+    "/slider/update": {
+      "put": {
+        "summary": "/slider/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list catrgory",
+            "schema": {
+              "type": "object",
+              "required": ["id", "slider_name"],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "slider_name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Slider"]
+      }
+    },
+    "/slider/contain/{id}": {
+      "get": {
+        "summary": "/slider/contain/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Slider"]
+      }
+    },
+    "/slider/contain/create": {
+      "post": {
+        "summary": "/slider/contain/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list catrgory",
+            "schema": {
+              "type": "object",
+              "required": ["contain_name", "contain_order", "contain_image"],
+              "properties": {
+                "contain_name": {
+                  "type": "string"
+                },
+                "contain_order": {
+                  "type": "integer"
+                },
+                "contain_body": {
+                  "type": "string"
+                },
+                "contain_image": {
+                  "type": "string"
+                },
+                "contain_header": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Slider"]
+      }
+    },
+    "/slider/contain/update": {
+      "put": {
+        "summary": "/slider/contain/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list catrgory",
+            "schema": {
+              "type": "object",
+              "required": [
+                "id",
+                "contain_name",
+                "contain_order",
+                "contain_image"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "contain_name": {
+                  "type": "string"
+                },
+                "contain_order": {
+                  "type": "integer"
+                },
+                "contain_body": {
+                  "type": "string"
+                },
+                "contain_image": {
+                  "type": "string"
+                },
+                "contain_header": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Slider"]
+      }
+    },
+    "/slider/contain/delete/{id}": {
+      "delete": {
+        "summary": "/slider/contain/delete/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Slider"]
+      }
+    },
+
+    "/domain/create": {
+      "post": {
+        "summary": "/domain/create",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "create",
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "description",
+                "url",
+                "created_by",
+                "updated_by"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "integer"
+                },
+                "updated_by": {
+                  "type": "integer"
+                },
+                "is_active": {
+                  "type": "boolean"
+                },
+                "is_delete": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "tags": ["Domain"]
+      }
+    },
+    "/domain/list": {
+      "post": {
+        "summary": "/domain/list",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "list menu",
+            "schema": {
+              "type": "object",
+              "required": ["limit", "offset"],
+              "properties": {
+                "limit": {
+                  "type": "integer"
+                },
+                "offset": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Domain"]
+      }
+    },
+
+    "/domain/list/{id}": {
+      "get": {
+        "summary": "/domain/list/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Domain"]
+      }
+    },
+    "/domain/update": {
+      "put": {
+        "summary": "/domain/update",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "domain create",
+            "schema": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "description",
+                "url",
+                "created_by",
+                "updated_by"
+              ],
+              "properties": {
+                "id": { "type": "integer" },
+                "name": { "type": "string" },
+                "description": { "type": "string" },
+                "url": { "type": "string" },
+                "created_by": { "type": "integer" },
+                "updated_by": { "type": "integer" },
+                "is_active": { "type": "boolean" },
+                "is_delete": { "type": "boolean" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Domain"]
+      }
+    },
+    "/domain/delete/{id}": {
+      "delete": {
+        "summary": "/domain/delete/{id}",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "$ref": "#/definitions/responses"
+        },
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
+        "tags": ["Domain"]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "accessToken": {
+      "type": "apiKey",
+      "name": "x-auth",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
 }
