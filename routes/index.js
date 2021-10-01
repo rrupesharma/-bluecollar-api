@@ -15,6 +15,7 @@ const cron = require('./cron.routes');
 const feedback = require('./feedback.routes');
 const slider = require('./slider.routes');
 const contain = require('./contain.routes');
+const user = require('./user.routes');
 const router = express.Router();
 
 router.use('/admin',admin);
@@ -33,5 +34,6 @@ router.use('/cron', cron);
 router.use('/feedback', feedback);
 router.use('/slider', slider);
 router.use('/contain', contain);
+router.use('/user', user);
 
 module.exports = router;

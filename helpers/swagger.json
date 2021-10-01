@@ -1,14 +1,14 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "SunShine Admin API document",
+        "title": "BlueCaller API document",
         "version": "1.0.0",
         "license": {
             "name": "ISC"
         },
         "description": "Adita Technologies"
     },
-    "host": "localhost:8881",
+    "host": "localhost:4001",
     "tags": [
         {
             "name": "Admin",
@@ -68,6 +68,10 @@
         },
         {
             "name": "Contain",
+            "description": ""
+        },
+        {
+            "name": "User",
             "description": ""
         },
         {
@@ -3066,6 +3070,66 @@
                 ],
                 "tags": [
                     "Contain"
+                ]
+            }
+        },
+
+        "/user/create": {
+            "post": {
+                "summary": "/user/create",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "list catrgory",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "meb_id",
+                                "firstname",
+                                "lastname"
+                            ],
+                            "properties": {
+                                "domain": {
+                                    "type": "text"
+                                },
+                                "meb_id": {
+                                    "type": "integer"
+                                },
+                                "firstname": {
+                                    "type": "string"
+                                },
+                                "lastname": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "phone": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "User"
                 ]
             }
         },
