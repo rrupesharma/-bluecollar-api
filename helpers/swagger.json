@@ -3133,6 +3133,53 @@
                 ]
             }
         },
+        "/user/loginDomainCheck": {
+            "post": {
+                "summary": "/user/loginDomainCheck",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "list catrgory",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "meb_id",
+                                "firstname",
+                                "lastname"
+                            ],
+                            "properties": {
+                                "domain": {
+                                    "type": "text"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "User"
+                ]
+            }
+        },
 
 
         "/slider/list": {
