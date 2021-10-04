@@ -23,9 +23,9 @@
         "type": "pgsql",
         "host": "localhost",
         "port": "5432",
-        "db": "bluecollar",
-        "username": "",
-        "password": ""
+        "db": "ECom1",
+        "username": "postgres",
+        "password": "root"
     },
     "external": {
         "url": "https://exoapirelay.beyondportal.co:444/api/v3",
