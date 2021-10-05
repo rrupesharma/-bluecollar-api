@@ -16,6 +16,7 @@ const feedback = require('./feedback.routes');
 const slider = require('./slider.routes');
 const contain = require('./contain.routes');
 const user = require('./user.routes');
+const membership = require('./membership.routes');
 const router = express.Router();
 
 router.use('/admin',admin);
@@ -35,5 +36,6 @@ router.use('/feedback', feedback);
 router.use('/slider', slider);
 router.use('/contain', contain);
 router.use('/user', user);
+router.use('/membership', membership);
 
 module.exports = router;

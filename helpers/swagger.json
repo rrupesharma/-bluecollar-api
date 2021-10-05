@@ -75,6 +75,10 @@
             "description": ""
         },
         {
+            "name": "Membership",
+            "description": ""
+        },
+        {
             "name": "Slider",
             "description": ""
         }
@@ -3177,6 +3181,216 @@
                 ],
                 "tags": [
                     "User"
+                ]
+            }
+        },
+        "/user/list": {
+            "post": {
+                "summary": "/user/list",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "list customer",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "limit",
+                                "offset"
+                            ],
+                            "properties": {
+                                "limit": {
+                                    "type": "integer"
+                                },
+                                "offset": {
+                                    "type": "integer"
+                                },
+                                "key": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "User"
+                ]
+            }
+        },
+        "/user/sendForgotPasswordLink": {
+            "post": {
+                "summary": "/user/sendForgotPasswordLink",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "forgot password",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "email"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "tags": [
+                    "User"
+                ]
+            }
+        },
+        "/user/setForgotPassword": {
+            "post": {
+                "summary": "/user/sendForgotPasswordLink",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "reset password",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "token",
+                                "newpassword",
+                                "confpassword"
+                            ],
+                            "properties": {
+                                "token": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "confpassword": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "tags": [
+                    "User"
+                ]
+            }
+        },
+        "/user/setChangePassword": {
+            "post": {
+                "summary": "/user/setChangePassword",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "reset password",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "token",
+                                "newpassword",
+                                "confpassword"
+                            ],
+                            "properties": {
+                                "token": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "confpassword": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "tags": [
+                    "User"
+                ]
+            }
+        },
+        "/membership/list": {
+            "post": {
+                "summary": "/membership/list",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "list membership",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "limit",
+                                "offset"
+                            ],
+                            "properties": {
+                                "limit": {
+                                    "type": "integer"
+                                },
+                                "offset": {
+                                    "type": "integer"
+                                },
+                                "key": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "Membership"
                 ]
             }
         },

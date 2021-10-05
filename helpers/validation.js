@@ -46,7 +46,7 @@ Validator.registerAsync('checkUsername',async function(value, attribute, req, pa
 
 //added custome validation to check username is exist or not
 Validator.registerAsync('checkLink',async function(value, attribute, req, passes) {
-    let query = `select * from admin_tbl where email='${value}'`;
+    let query = `select * from user_tbl where email='${value}'`;
     let result = await pool.executeQuery(query,[])
     if(result.rows.length>0){
         passes();
@@ -68,7 +68,7 @@ Validator.registerAsync('conf_password',async function(value, attribute, req, pa
 
 //added custome validation to check token is exist or not
 Validator.registerAsync('checkToken',async function(value, attribute, req, passes) {
-    let query = `select * from admin_tbl where reset_code='${value}'`;
+    let query = `select * from user_tbl where token='${value}'`;
     let result = await pool.executeQuery(query,[])
     if(result.rows.length>0){
         let jwtDataDecord = await jwtToken.verify(result.rows[0]['reset_code'])
