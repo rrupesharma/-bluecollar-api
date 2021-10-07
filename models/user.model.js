@@ -8,11 +8,11 @@ const { validate } = require('../helpers/validation');
  * @returns 
  */
 
- async function validateAddUser(info) {
+ async function validateAddProfile(info) {
     return new Promise(async function (resolve, reject) {
       try {
         let rules = {
-            domain: 'required',
+          user_id: 'required',
             meb_id: 'required',
             firstname: 'required',
             lastname: 'required',
@@ -31,4 +31,4 @@ const { validate } = require('../helpers/validation');
   }
 
 
-  exports.validateAddUser = validateAddUser
+  exports.validateAddProfile = validateAddProfile

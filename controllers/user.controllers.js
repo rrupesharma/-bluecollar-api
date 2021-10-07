@@ -1,32 +1,65 @@
-const { returnStatus,sysErrorLog } = require('../helpers/utils');
+const { returnStatus, sysErrorLog } = require('../helpers/utils');
 const pool = require('../models/pgconnection');
 const jwtToken = require('../helpers/jwtToken');
 const iplocation = require('../helpers/iplocation');
-const {validate} = require('../helpers/validation');
+const { validate } = require('../helpers/validation');
 const mail = require('../helpers/mail');
 const md5 = require('md5');
-const {getEmailTemplate} = require('../models/utils.model');
+const { getEmailTemplate } = require('../models/utils.model');
 const config = require('config');
 const userModel = require('../models/user.model');
 
 
 
-const create = async (req, res)=>{
+const create = async (req, res) => {
     try {
         let data = req.body;
-      //  req.body = filterSingleQoute(req.body);
+        //  req.body = filterSingleQoute(req.body);
         await userModel.validateAddUser(req.body);
-     //   let token = await jwtToken.generate({ "email": data.email, action: 'verification' ,role: role}, 48)
-      //  let createUser = await productModel.insertStockItemsBySupplier(req)
+        //   let token = await jwtToken.generate({ "email": data.email, action: 'verification' ,role: role}, 48)
+        //  let createUser = await productModel.insertStockItemsBySupplier(req)
         let query = `INSERT INTO public.user_tbl(
             domain, meb_id, firstname,lastname, email, phone, password, creation_dt)
             VALUES ('${data.domain}','${data.meb_id}','${data.firstname}', '${data.lastname}',  '${data.email}', '${data.phone}', '${data.password}', now()) returning user_id;`;
-        let result = await pool.executeQuery(query,[]);
+        let result = await pool.executeQuery(query, []);
         return returnStatus(res, {}, 200, 'success')
     } catch (error) {
-        if (error.stack){
+        if (error.stack) {
             console.log("error", new Date(), ":", error)
-         //   sysErrorLog(error,__filename.slice(__dirname.length + 1))
+            //   sysErrorLog(error,__filename.slice(__dirname.length + 1))
+        }
+        return returnStatus(res, error.erorrLog || {}, error.status || 500, error.message)
+    }
+}
+
+
+const createProfile = async (req, res) => {
+    try {
+        let data = req.body;
+        // await userModel.validateAddUser(req.body);
+        //   let token = await jwtToken.generate({ "email": data.email, action: 'verification' ,role: role}, 48)
+        //  let createUser = await productModel.insertStockItemsBySupplier(req)
+        let query1 = `select * from Public.profile_tbl where user_id='${data.user_id}'`
+        let result1 = await pool.executeQuery(query1, []);
+        console.log(result1.rows[0]);
+        if (result1.rows.length == 0) {
+            let query = `INSERT INTO public.profile_tbl(
+             user_id, billing_address, billing_city, billing_state, billing_country, billing_postal_code, delivery_address, delivery_city,delivery_state,delivery_country,delivery_postal_code,creation_dt)
+            VALUES ('${data.user_id}','${data.billing_address}','${data.billing_city}','${data.billing_state}', '${data.billing_country}',  '${data.billing_postal_code}', '${data.delivery_address}', '${data.delivery_city}', '${data.delivery_state}','${data.delivery_country}','${data.delivery_postal_code}',now()) returning profile_id;`;
+            let result = await pool.executeQuery(query, []);
+        } else if (result1.rows[0].user_id.length != 0) {
+            let query = `UPDATE public.profile_tbl
+        SET billing_address='${data.billing_address}', billing_city='${data.billing_city}', billing_state='${data.billing_state}', billing_country='${data.billing_country || ""}', billing_postal_code='${data.billing_postal_code}',
+        delivery_address= '${data.delivery_address}',delivery_city = '${data.delivery_city}',delivery_state = '${data.delivery_state}',delivery_country = '${data.delivery_country}',delivery_postal_code = '${data.delivery_postal_code}'
+        WHERE user_id = ${data.user_id}`
+            let result = await pool.executeQuery(query, []);
+        }
+
+        return returnStatus(res, {}, 200, 'success')
+    } catch (error) {
+        if (error.stack) {
+            console.log("error", new Date(), ":", error)
+            //   sysErrorLog(error,__filename.slice(__dirname.length + 1))
         }
         return returnStatus(res, error.erorrLog || {}, error.status || 500, error.message)
     }
@@ -54,7 +87,7 @@ const loginDomainCheck = async (req, res) => {
         data.iplocation = iplocations
         let token = await jwtToken.generateLogin(data);
         console.log(res);
-        return returnStatus(res, {userData: data, token: token}, 200, 'success')
+        return returnStatus(res, { userData: data, token: token }, 200, 'success')
     } catch (error) {
         if (error.stack) {
             console.log("error", new Date(), ":", error)
@@ -64,65 +97,65 @@ const loginDomainCheck = async (req, res) => {
     }
 }
 
-const getAll = async (req, res)=>{
+const getAll = async (req, res) => {
     try {
         let rules = {
             limit: 'required',
             offset: 'required',
         }
 
-        await validate(req.body, rules,[]);
+        await validate(req.body, rules, []);
         let limit = req.body.limit;
         let offset = req.body.offset;
-        let key = req.body.key!=undefined && req.body.key!=''?`and (lower(firstname) like lower('%${req.body.key}%') or lower(lastname) like lower('%${req.body.key}%') or lower(email) like lower('%${req.body.key}%')) `:"";
+        let key = req.body.key != undefined && req.body.key != '' ? `and (lower(firstname) like lower('%${req.body.key}%') or lower(lastname) like lower('%${req.body.key}%') or lower(email) like lower('%${req.body.key}%')) ` : "";
         let query = `select * from public.user_tbl where is_delete = false ${key} order by creation_dt desc limit ${limit} offset ${offset}`;
-        let result =  await pool.executeQueryWithMsg(query,[],'No records available.')
+        let result = await pool.executeQueryWithMsg(query, [], 'No records available.')
         query = `select count(id) as cnt from public.user_tbl where is_delete = false ${key}`;
-        let resultCount =  await pool.executeQuery(query,[])
+        let resultCount = await pool.executeQuery(query, [])
         let data = {
-            totalCount : parseInt(resultCount.rows[0]['cnt']),
-            result : result
+            totalCount: parseInt(resultCount.rows[0]['cnt']),
+            result: result
         }
         return returnStatus(res, data, 200, 'success')
 
     } catch (error) {
-        if (error.stack){
+        if (error.stack) {
             console.log("error", new Date(), ":", error)
         }
         return returnStatus(res, error.erorrLog || {}, error.status || 500, error.message)
     }
 }
 
-const getById = async (req, res)=>{
+const getById = async (req, res) => {
     try {
         let id = req.user.user_id;
         let query = `select *
         from public.user_tbl user
         where user.user_id = ${id}`;
         //console.log("getById====",id,query)
-        let result =  await pool.executeQueryWithMsg(query,[],'No records available.')
+        let result = await pool.executeQueryWithMsg(query, [], 'No records available.')
         let data = result[0];
         return returnStatus(res, data, 200, 'success')
 
     } catch (error) {
-        if (error.stack){
+        if (error.stack) {
             console.log("error", new Date(), ":", error);
-           // sysErrorLog(error,__filename.slice(__dirname.length + 1))
+            // sysErrorLog(error,__filename.slice(__dirname.length + 1))
         }
         return returnStatus(res, error.erorrLog || {}, error.status || 500, error.message)
     }
 }
 
 
-const setForgotPassword = async (req, res)=>{
+const setForgotPassword = async (req, res) => {
     try {
 
         let rules = {
             token: 'required|checkToken',
-            password: 'required|conf_password:'+req.body.confpassword
+            password: 'required|conf_password:' + req.body.confpassword
         }
 
-        await validate(req.body, rules,[]);
+        await validate(req.body, rules, []);
         let token = req.body.token;
         let password = req.body.password;
         let query = `update usre_tbl set password='${md5(password)}',token='' where token='${token}'`;
@@ -132,22 +165,22 @@ const setForgotPassword = async (req, res)=>{
         return returnStatus(res, {}, 200, 'success')
 
     } catch (error) {
-        if (error.stack){
+        if (error.stack) {
             console.log("error", new Date(), ":", error)
-            sysErrorLog(error,__filename.slice(__dirname.length + 1))
+            sysErrorLog(error, __filename.slice(__dirname.length + 1))
         }
         return returnStatus(res, error.erorrLog || {}, error.status || 500, error.message)
     }
 }
 
-const setChangePassword = async (req, res)=>{
+const setChangePassword = async (req, res) => {
     try {
-        console.log("req.user===",req.user)
+        console.log("req.user===", req.user)
         let rules = {
-            password: 'required|conf_password:'+req.body.confpassword
+            password: 'required|conf_password:' + req.body.confpassword
         }
 
-        await validate(req.body, rules,[]);
+        await validate(req.body, rules, []);
         let token = req.body.token;
         let password = req.body.password;
         let query = `update user_tbl set password='${md5(password)}' where id='${req.user.user_id}'`;
@@ -156,24 +189,24 @@ const setChangePassword = async (req, res)=>{
         return returnStatus(res, {}, 200, 'success')
 
     } catch (error) {
-        if (error.stack){
+        if (error.stack) {
             console.log("error", new Date(), ":", error)
-            sysErrorLog(error,__filename.slice(__dirname.length + 1))
+            sysErrorLog(error, __filename.slice(__dirname.length + 1))
         }
         return returnStatus(res, error.erorrLog || {}, error.status || 500, error.message)
     }
 }
 
-const sendForgotPasswordLink = async (req, res)=>{
+const sendForgotPasswordLink = async (req, res) => {
     try {
 
         let rules = {
             email: 'required|email|checkLink'
         }
 
-        await validate(req.body, rules,[]);
+        await validate(req.body, rules, []);
         let email = req.body.email;
-        let token = await jwtToken.generate({ "email": email, action: 'reset'}, 0.5)
+        let token = await jwtToken.generate({ "email": email, action: 'reset' }, 0.5)
         //let jwtDataDecord = await jwtToken.verify(jwtData)
 
         let query = `update user_tbl set token='${token}' where email = '${email}' Returning *;`;
@@ -190,21 +223,22 @@ const sendForgotPasswordLink = async (req, res)=>{
         return returnStatus(res, {}, 200, 'successfully send mail')
 
     } catch (error) {
-        if (error.stack){
+        if (error.stack) {
             console.log("error", new Date(), ":", error)
-            sysErrorLog(error,__filename.slice(__dirname.length + 1))
+            sysErrorLog(error, __filename.slice(__dirname.length + 1))
         }
         return returnStatus(res, error.erorrLog || {}, error.status || 500, error.message)
     }
 }
 
 
-module.exports = { 
+module.exports = {
     create,
     loginDomainCheck,
-    getAll, 
+    getAll,
     getById,
     setForgotPassword,
     setChangePassword,
-    sendForgotPasswordLink
+    sendForgotPasswordLink,
+    createProfile
 }

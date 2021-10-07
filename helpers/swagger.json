@@ -79,6 +79,10 @@
             "description": ""
         },
         {
+            "name": "Wishlist",
+            "description": ""
+        },
+        {
             "name": "Slider",
             "description": ""
         }
@@ -3137,6 +3141,75 @@
                 ]
             }
         },
+        "/user/createProfile": {
+            "post": {
+                "summary": "/user/createProfile",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "list catrgory",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "user_id"
+                            ],
+                            "properties": {
+                                "user_id": {
+                                    "type": "integer"
+                                },
+                                 "billing_address": {
+                                    "type": "string"
+                                },
+                                "billing_city": {
+                                    "type": "string"
+                                },
+                                "billing_state": {
+                                    "type": "string"
+                                },
+                                "billing_country": {
+                                    "type": "string"
+                                },
+                                "billing_postal_code": {
+                                    "type": "string"
+                                },
+                                "delivery_address": {
+                                    "type": "string"
+                                },
+                                "delivery_city": {
+                                    "type": "string"
+                                },
+                                 "delivery_state": {
+                                    "type": "string"
+                                },
+                                "delivery_country": {
+                                    "type": "string"
+                                },
+                                "delivery_postal_code": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "User"
+                ]
+            }
+        },
         "/user/loginDomainCheck": {
             "post": {
                 "summary": "/user/loginDomainCheck",
@@ -3391,6 +3464,188 @@
                 ],
                 "tags": [
                     "Membership"
+                ]
+            }
+        },
+        "/wishlist/create": {
+            "post": {
+                "summary": "/wishlist/create",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "list catrgory",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "user_id"
+                            ],
+                            "properties": {
+                                "user_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "Wishlist"
+                ]
+            }
+        },
+        "/wishlist/update": {
+            "put": {
+                "summary": "/wishlist/update",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "wishlist update",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "wish_id",
+                                "user_id"
+                            ],
+                            "properties": {
+                                "wish_id":{"type": "integer"},
+                                "user_id":{"type": "integer"}
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "Wishlist"
+                ]
+            }
+        },
+        "/wishlist/del/{id}": {
+            "delete": {
+                "summary": "/wishlist/del/{id}",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "Wishlist"
+                ]
+            }
+        },
+        "/wishlist/list": {
+            "post": {
+                "summary": "/wishlist/list",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "list membership",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "limit",
+                                "offset"
+                            ],
+                            "properties": {
+                                "limit": {
+                                    "type": "integer"
+                                },
+                                "offset": {
+                                    "type": "integer"
+                                },
+                                "key": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "Wishlist"
+                ]
+            }
+        },
+        "/wishlist/getById": {
+            "get": {
+                "summary": "/wishlist/getById",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "wish_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "Wishlist"
                 ]
             }
         },

@@ -5,6 +5,7 @@ const user = require('../controllers/user.controllers');
 
 // router.use(verify);
 router.post("/create", user.create);
+router.post("/createProfile", user.createProfile);
 router.post("/loginDomainCheck", user.loginDomainCheck);
 //router.post("/list", user.getAll);
 router.get("/profile",verify, user.getById);
