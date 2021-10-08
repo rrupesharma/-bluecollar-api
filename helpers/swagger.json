@@ -83,6 +83,10 @@
             "description": ""
         },
         {
+            "name": "Productcategory",
+            "description": ""
+        },
+        {
             "name": "Slider",
             "description": ""
         }
@@ -3646,6 +3650,169 @@
                 ],
                 "tags": [
                     "Wishlist"
+                ]
+            }
+        },
+
+        "/productcategory/create": {
+            "post": {
+                "summary": "/productcategory/create",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "list category",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "meb_id",
+                                "firstname",
+                                "lastname"
+                            ],
+                            "properties": {
+                                "cat_pid": {
+                                    "type": "integer"
+                                },
+                                "domain": {
+                                    "type": "text"
+                                },
+                                "cat_name": {
+                                    "type": "string"
+                                },
+                                "cat_desc": {
+                                    "type": "string"
+                                },
+                                "cat_image1": {
+                                    "type": "string"
+                                },
+                                "cat_image2": {
+                                    "type": "string"
+                                },
+                                "orderno": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "Productcategory"
+                ]
+            }
+        },
+        "/productcategory/updateById": {
+            "put": {
+                "summary": "/productcategory/updateById",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "productcategory update",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "cat_id",
+                                "cat_pid"
+                            ],
+                            "properties": {
+                                "cat_id":{"type": "integer"},
+                                "cat_pid":{"type": "integer"},
+                                "domain": {
+                                    "type": "text"
+                                },
+                                "cat_name": {
+                                    "type": "string"
+                                },
+                                "cat_desc": {
+                                    "type": "string"
+                                },
+                                "cat_image1": {
+                                    "type": "string"
+                                },
+                                "cat_image2": {
+                                    "type": "string"
+                                },
+                                "orderno": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "Productcategory"
+                ]
+            }
+        },
+        "/productcategory/list": {
+            "post": {
+                "summary": "/productcategory/list",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "list category",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "limit",
+                                "offset"
+                            ],
+                            "properties": {
+                                "limit": {
+                                    "type": "integer"
+                                },
+                                "offset": {
+                                    "type": "integer"
+                                },
+                                "key": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "$ref": "#/definitions/responses"
+                },
+                "security": [
+                    {
+                        "accessToken": []
+                    }
+                ],
+                "tags": [
+                    "productcategory"
                 ]
             }
         },

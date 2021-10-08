@@ -18,6 +18,7 @@ const contain = require('./contain.routes');
 const user = require('./user.routes');
 const membership = require('./membership.routes');
 const wishlist = require('./wishlist.routes');
+const productcategory = require('./productcategory.routes');
 const router = express.Router();
 
 router.use('/admin',admin);
@@ -39,5 +40,6 @@ router.use('/contain', contain);
 router.use('/user', user);
 router.use('/membership', membership);
 router.use('/wishlist', wishlist);
+router.use('/productcategory', productcategory);
 
 module.exports = router;
