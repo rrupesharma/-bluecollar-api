@@ -48,38 +48,56 @@ const updateById = async (req, res)=>{
     }
 }
 
-const getAll = async (req, res)=>{
+const getAll = async (req, res) => {
     try {
-        let rules = {
-            limit: 'required',
-            offset: 'required',
+      let rules = {
+        limit: "required",
+        offset: "required",
+      };
+  
+      await validate(req.body, rules, []);
+      let limit = req.body.limit;
+      let offset = req.body.offset;
+      let query = `SELECT cat_id, cat_pid, cat_name, domain FROM category_tbl where is_delete=false ORDER BY cat_name limit ${limit} offset ${offset}`;
+      let result = await pool.executeQueryWithMsg(
+        query,
+        [],
+        "No records available."
+      );
+      let nested = subCategory(result);
+      function subCategory(data, parentId = 0) {
+        var out = [];
+        for (var i in data) {
+          if (data[i].cat_pid == parentId) {
+            var children = subCategory(data, data[i].cat_id);
+  
+            if (children.length) {
+              data[i].subCategory = children;
+            }
+            out.push(data[i]);
+          }
         }
-        await validate(req.body, rules,[]);
-        let limit = req.body.limit;
-        let offset = req.body.offset;
-       // let key = req.body.key!=undefined && req.body.key!=''?`and (lower(user_id) like lower('%${req.body.key}%')) `:"";
-        let query = `SELECT * FROM category_tbl catcc
-        INNER JOIN category_tbl CATYP
-        ON catcc.cat_pid = CATYP.cat_id order by catcc.cat_id desc limit ${limit} offset ${offset}`;
-        let result =  await pool.executeQueryWithMsg(query,[],'No records available.')
-        query = `select count(catyparent.cat_id) as cnt FROM category_tbl catcc
-        INNER JOIN category_tbl catyparent
-        ON catcc.cat_pid = catyparent.cat_id `;
-        let resultCount =  await pool.executeQuery(query,[])
-        let data = {
-            totalCount : parseInt(resultCount.rows[0]['cnt']),
-            result : result
-        }
-        console.log(data);
-        return returnStatus(res, data, 200, 'success')
-
+        return out;
+      }
+  
+      let data = {
+        result: nested,
+        requestBody: req.body,
+      };
+      return returnStatus(res, data, 200, "success");
     } catch (error) {
-        if (error.stack){
-            console.log("error", new Date(), ":", error)
-        }
-        return returnStatus(res, error.erorrLog || {}, error.status || 500, error.message)
+      if (error.stack) {
+        console.log("error", new Date(), ":", error);
+        sysErrorLog(error, __filename.slice(__dirname.length + 1));
+      }
+      return returnStatus(
+        res,
+        error.erorrLog || {},
+        error.status || 500,
+        error.message
+      );
     }
-}
+  };
 
 
 module.exports = {
